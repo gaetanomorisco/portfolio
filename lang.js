@@ -139,6 +139,7 @@ while (walker.nextNode()) {
 function setLang(lang) {
   pieces.forEach(p => { p.n.nodeValue = lang === 'it' ? p.en.replace(p.key, IT[p.key]) : p.en; });
   document.documentElement.lang = lang;
+  document.querySelectorAll('a.cv-link').forEach(a => a.setAttribute('href', lang === 'it' ? 'cv-it.pdf' : 'cv.pdf'));
   document.querySelectorAll('.lang button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
   try { localStorage.setItem('lang', lang); } catch (e) {}
 }
