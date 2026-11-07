@@ -20,8 +20,8 @@
 /* Drowner by Hainz Studio — the font file goes in the fonts/ folder */
 @font-face {
   font-family: "Drowner";
-  src: url("fonts/Drowner.woff2") format("woff2"), url("fonts/Drowner.woff") format("woff"), url("fonts/Drowner.otf") format("opentype"), url("fonts/Drowner.ttf") format("truetype");
-  font-display: swap;
+  src: url("fonts/Drowner.otf") format("opentype");
+  font-display: block;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -231,3 +231,7 @@ img, video { display: block; }
   .hero-nav .lang button { font-size: 13px; }
   .hero-doodle { width: 140px; }
 }
+
+/* keep the name hidden until Drowner has arrived, then fade it in */
+.hero-name { opacity: 0; transition: opacity .35s ease; }
+.hero-name.name-ready { opacity: 1; }

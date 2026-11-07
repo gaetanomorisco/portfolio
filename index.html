@@ -13,6 +13,7 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="preload" href="fonts/Drowner.otf" as="font" type="font/otf" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:wght@300;400;500;600&family=Cedarville+Cursive&display=swap" rel="stylesheet">
@@ -136,7 +137,10 @@
       nameEl.style.fontSize = '100px';
       nameEl.style.fontSize = (100 * nameEl.clientWidth / nameSpan.offsetWidth) + 'px';
     }
-    document.fonts.ready.then(fitName); addEventListener('resize', fitName);
+    const showName = () => { fitName(); nameEl.classList.add('name-ready'); };
+    document.fonts.load('1em Drowner').then(showName, showName);
+    setTimeout(showName, 3000); // never leave it hidden on a very slow connection
+    addEventListener('resize', fitName);
     // the top bar slides in once the hero has scrolled away
     const bar = document.querySelector('.topbar.float');
     const hero = document.querySelector('.glass-hero');
